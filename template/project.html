@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+</head>
+<body>
+    <table class="table my-5 container">
+        <thead>
+            <tr>
+                <th scope="col">Student Name</th>
+                <th scope="col">Project Title</th>
+                <th scope="col">Programming Language</th>
+                <th scope="col">Duration</th>   
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in project %}
+            <tr>              
+                <td>{{p.student_name}}</td>
+                <td>{{p.project_title}}</td>
+                <td>{{p.project_language}}</td>
+                <td>{{p.duration}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>

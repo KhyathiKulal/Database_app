@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <form class="container"><!-- get method-->
+        <h1 class="mb-5 mt-5 text-center" style="color: brown;">Course List</h1>
+        <div class="d-flex container">
+            <select name="class" class="form-select " id="class" required>
+                <option disabled selected>Select Branch</option>
+                <option>CSE</option>
+                <option>AIDS</option>
+                <option >CSBS</option>
+                <option>AIML</option>
+            </select>
+            <input class="btn btn-primary mx-3" type="submit" value="Submit">
+        </div>    
+    </form>
+    <table class="table my-5 container">
+        <thead>
+            <tr>
+                <th scope="col">Course Name</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Code</th>
+                <th scope="col">Fees</th>
+                <th scope="col">Credits</th>
+                  
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                
+                <td>{{course.course_name}}</td>
+                <td>{{course.course_duration}}</td>
+                <td>{{course.course_code}}</td>
+                <td>{{course.course_fees}}</td>
+                <td>{{course.course_credits}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+
+<!-- develop a model form for student that contains his topic chosen for project, languages used and duration with a model called project. 
+ 
+for students deveoped in mod2 create a generic class view which displays list of students and detail view that displays student details for any selected student in the list -->
