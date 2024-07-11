@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from course.models import Course
+from course.models import Course, Project
 
 def course_list(request):
     queryset = Course.objects.all()
@@ -11,27 +11,23 @@ def course_list(request):
     }
     return render(request, 'course.html', context)
 
-# def ProjectForm(request):
-#     if request.method == "POST":
-#         name = request.POST.get('name')
-#         projectTitle = request.POST.get('projectTitle')
-#         language = request.POST.get('lang')
-#         duration = request.POST.get('duration')
+def ProjectForm(request):
+    if request.method == "POST":
+        student_name = request.POST.get('name')
+        project_title = request.POST.get('projectTitle')
+        project_language = request.POST.get('lang')
+        duration = request.POST.get('duration')
+        obj=Project(student_name=student_name,project_title=project_title,project_language=project_language,duration=duration)
+        obj.save()
+      
+        return HttpResponse("<h3>Project details saved</h3>")
+    return render(request, 'projectForm.html')
 
-#         Project.objects.create( #creates when u enter
-#             student_name = name,
-#             project_title = projectTitle,
-#             project_language = language,
-#             duration = duration,
-#         )
+def project_details(request):
+    projects = Project.objects.all()
+    context = {
+        'project' : projects 
+    }
+    return render(request, 'project.html', context)
 
-#         return HttpResponse("<h3>Project details saved</h3>")
-#     return render(request, 'projectForm.html')
-
-# def project_details(request):
-#     projects = Project.objects.all()
-#     context = {
-#         'project' : projects 
-#     }
-#     return render(request, 'project.html', context)
 
